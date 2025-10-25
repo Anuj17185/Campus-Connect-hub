@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🎓 Campus Connect Hub</div>
+            <div class="user-info">
+                <span class="user-badge">Student</span>
+                <span>Ravi Kumar</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="nav-item active" data-section="events-notices">📋 Events &amp; Notices</div>
+            <div class="nav-item" data-section="complaints">🎯 Complaints</div>
+            <div class="nav-item" data-section="attendance">📊 Attendance</div>
+            <div class="nav-item" data-section="timetable">🗓️ Timetable</div>
+            <div class="nav-item" data-section="clubs">🎭 Clubs</div>
+            <div class="nav-item" data-section="feedback">💬 Feedback</div>
+        </aside>
+
+        <main class="content-area">
+            <!-- Events & Notices Section -->
+             <section id="events-notices" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Events &amp; Notice Board</h1>
+                    <p class="section-subtitle">Stay updated with campus announcements and upcoming events</p>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="openModal('addEventModal')">+ Post Event</button>
+                        <button class="btn btn-secondary" onclick="openModal('addNoticeModal')">+ Post Notice</button>
+                    </div>
+                </div>
+
+                <div class="grid-2" id="eventsNoticesGrid">
+                    <!-- Sample Event Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-event">Event</span>
+                                <h3 class="card-title">Tech Fest 2025</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📅 Nov 15-17, 2025</span>
+                            <span>📍 Main Auditorium</span>
+                        </div>
+                        <div class="card-content">
+                            Annual technical festival featuring coding competitions, robotics workshops, and guest lectures from industry experts. Register before Nov 10th.
+                        </div>
+                        <button class="btn btn-primary">Register Now</button>
+                    </div>
+
+                    <!-- Sample Notice Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-notice">Notice</span>
+                                <span class="badge badge-urgent">Urgent</span>
+                                <h3 class="card-title">Mid-Semester Exam Schedule</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📅 Posted: Oct 20, 2025</span>
+                            <span>👤 Exam Controller</span>
+                        </div>
+                        <div class="card-content">
+                            Mid-semester examinations will be conducted from Nov 5-12, 2025. Students must carry their ID cards. Admit cards available from Nov 1st.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-event">Event</span>
+                                <h3 class="card-title">Career Guidance Workshop</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📅 Oct 28, 2025</span>
+                            <span>📍 Seminar Hall B</span>
+                        </div>
+                        <div class="card-content">
+                            Learn about career opportunities in tech industry, resume building, and interview preparation. Speaker: HR Manager from TCS.
+                        </div>
+                        <button class="btn btn-primary">RSVP</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-notice">Notice</span>
+                                <h3 class="card-title">Library Timing Update</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📅 Posted: Oct 24, 2025</span>
+                            <span>👤 Library Department</span>
+                        </div>
+                        <div class="card-content">
+                            Library will remain open till 10 PM during examination period. Weekend hours: 8 AM - 6 PM.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Complaints Section -->
+            <section id="complaints" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Complaint &amp; Request System</h1>
+                    <p class="section-subtitle">Report issues related to hostel, academics, facilities, and more</p>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="openModal('addComplaintModal')">+ Submit Complaint</button>
+                        <div style="display: flex; gap: var(--space-8);">
+                            <button class="btn btn-secondary" onclick="filterComplaints('all')">All</button>
+                            <button class="btn btn-secondary" onclick="filterComplaints('pending')">Pending</button>
+                            <button class="btn btn-secondary" onclick="filterComplaints('in-progress')">In Progress</button>
+                            <button class="btn btn-secondary" onclick="filterComplaints('resolved')">Resolved</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2" id="complaintsGrid">
+                    <div class="card" data-status="pending">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-pending">Pending</span>
+                                <h3 class="card-title">Hostel WiFi Issue</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>🏷️ Hostel</span>
+                            <span>📅 Oct 23, 2025</span>
+                            <span>🎫 #H-2134</span>
+                        </div>
+                        <div class="card-content">
+                            WiFi connectivity is very poor in Block A, 3rd floor. Unable to attend online classes.
+                        </div>
+                        <div class="complaint-thread">
+                            <div class="thread-item">
+                                <div class="thread-meta">Admin • Oct 24, 2025</div>
+                                <div>We are looking into this issue. Network team has been notified.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-status="resolved">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-resolved">Resolved</span>
+                                <h3 class="card-title">Classroom AC Not Working</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>🏷️ Academics</span>
+                            <span>📅 Oct 20, 2025</span>
+                            <span>🎫 #A-1987</span>
+                        </div>
+                        <div class="card-content">
+                            Air conditioning in Room 301, Academic Block not functioning properly.
+                        </div>
+                        <div class="complaint-thread">
+                            <div class="thread-item">
+                                <div class="thread-meta">Maintenance • Oct 21, 2025</div>
+                                <div>AC has been repaired. Issue resolved.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" data-status="in-progress">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-in-progress">In Progress</span>
+                                <h3 class="card-title">Library Book Shortage</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>🏷️ Library</span>
+                            <span>📅 Oct 22, 2025</span>
+                            <span>🎫 #L-3421</span>
+                        </div>
+                        <div class="card-content">
+                            Not enough copies of "Digital Signal Processing" for semester students. Only 5 copies for 60 students.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="attendance" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Attendance Tracker</h1>
+                    <p class="section-subtitle">Monitor your attendance across all subjects</p>
+                </div>
+
+                <div class="attendance-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" style="color: var(--color-success);">87%</div>
+                        <div class="stat-label">Overall Attendance</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">124</div>
+                        <div class="stat-label">Classes Attended</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">18</div>
+                        <div class="stat-label">Classes Missed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" style="color: var(--color-warning);">3</div>
+                        <div class="stat-label">Below 75%</div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 class="card-title">Digital Electronics</h3>
+                        <div class="card-meta">
+                            <span>Prof. A. Kumar</span>
+                        </div>
+                        <div style="margin: var(--space-16) 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-8);">
+                                <span>Attendance</span>
+                                <span style="font-weight: 600; color: var(--color-success);">92%</span>
+                            </div>
+                            <div style="background-color: var(--color-secondary); border-radius: var(--radius-base); height: 8px; overflow: hidden;">
+                                <div style="background-color: var(--color-success); width: 92%; height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📊 33/36 classes</span>
+                            <span>✅ Safe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Computer Networks</h3>
+                        <div class="card-meta">
+                            <span>Prof. S. Patel</span>
+                        </div>
+                        <div style="margin: var(--space-16) 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-8);">
+                                <span>Attendance</span>
+                                <span style="font-weight: 600; color: var(--color-success);">85%</span>
+                            </div>
+                            <div style="background-color: var(--color-secondary); border-radius: var(--radius-base); height: 8px; overflow: hidden;">
+                                <div style="background-color: var(--color-success); width: 85%; height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📊 28/33 classes</span>
+                            <span>✅ Safe</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Data Structures</h3>
+                        <div class="card-meta">
+                            <span>Prof. R. Sharma</span>
+                        </div>
+                        <div style="margin: var(--space-16) 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-8);">
+                                <span>Attendance</span>
+                                <span style="font-weight: 600; color: var(--color-warning);">72%</span>
+                            </div>
+                            <div style="background-color: var(--color-secondary); border-radius: var(--radius-base); height: 8px; overflow: hidden;">
+                                <div style="background-color: var(--color-warning); width: 72%; height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📊 26/36 classes</span>
+                            <span style="color: var(--color-warning);">⚠️ At Risk</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Mathematics-III</h3>
+                        <div class="card-meta">
+                            <span>Prof. M. Singh</span>
+                        </div>
+                        <div style="margin: var(--space-16) 0;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-8);">
+                                <span>Attendance</span>
+                                <span style="font-weight: 600; color: var(--color-success);">94%</span>
+                            </div>
+                            <div style="background-color: var(--color-secondary); border-radius: var(--radius-base); height: 8px; overflow: hidden;">
+                                <div style="background-color: var(--color-success); width: 94%; height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>📊 31/33 classes</span>
+                            <span>✅ Excellent</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timetable Section -->
+            <section id="timetable" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Class Timetable</h1>
+                    <p class="section-subtitle">Your weekly class schedule at a glance</p>
+                </div>
+
+                <div class="card timetable-grid">
+                    <table class="timetable-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>9:00-10:00</strong></td>
+                                <td>Digital Electronics<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 301</span></td>
+                                <td>Mathematics-III<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 205</span></td>
+                                <td>Data Structures<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Lab 3</span></td>
+                                <td>Computer Networks<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 302</span></td>
+                                <td>Digital Electronics<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 301</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>10:00-11:00</strong></td>
+                                <td>Data Structures<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 304</span></td>
+                                <td>Computer Networks<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 302</span></td>
+                                <td>Data Structures<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Lab 3</span></td>
+                                <td>Mathematics-III<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 205</span></td>
+                                <td>Computer Networks<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 302</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>11:00-11:30</strong></td>
+                                <td colspan="5" style="background-color: var(--color-bg-3); font-weight: 600;">BREAK</td>
+                            </tr>
+                            <tr>
+                                <td><strong>11:30-12:30</strong></td>
+                                <td>Mathematics-III<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 205</span></td>
+                                <td>Digital Electronics Lab<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Lab 1</span></td>
+                                <td>Computer Networks<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 302</span></td>
+                                <td>Data Structures<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 304</span></td>
+                                <td>Mathematics-III<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 205</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>12:30-1:30</strong></td>
+                                <td>Computer Networks Lab<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Lab 2</span></td>
+                                <td>Digital Electronics Lab<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Lab 1</span></td>
+                                <td>-</td>
+                                <td>Tutorial<br><span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Room 201</span></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Clubs Section -->
+            <section id="clubs" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Clubs &amp; Projects</h1>
+                    <p class="section-subtitle">Join clubs, collaborate on projects, and build together</p>
+                    <button class="btn btn-primary" onclick="openModal('createClubModal')">+ Create Club/Project</button>
+                </div>
+
+                <div class="grid-2" id="clubsGrid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-club">Technical Club</span>
+                                <h3 class="card-title">Coding Club</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👥 45 members</span>
+                            <span>📅 Weekly meetings</span>
+                        </div>
+                        <div class="card-content">
+                            Competitive programming, hackathons, and coding workshops. Preparing for ICPC 2025.
+                        </div>
+                        <div class="club-members">
+                            <span class="member-badge">👑 President: Amit K.</span>
+                            <span class="member-badge">📧 coding.club@college.edu</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">Join Club</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-club">Project</span>
+                                <h3 class="card-title">IoT Smart Campus</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👥 8 members</span>
+                            <span>⏰ In Progress</span>
+                        </div>
+                        <div class="card-content">
+                            Building IoT sensors for campus monitoring - energy usage, parking availability, and air quality tracking.
+                        </div>
+                        <div class="club-members">
+                            <span class="member-badge">Ravi</span>
+                            <span class="member-badge">Priya</span>
+                            <span class="member-badge">Arjun</span>
+                            <span class="member-badge">+5 more</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">Request to Join</button>
+                            <button class="btn btn-secondary">View Project</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-club">Cultural Club</span>
+                                <h3 class="card-title">Photography Club</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👥 32 members</span>
+                            <span>📅 Bi-weekly outings</span>
+                        </div>
+                        <div class="card-content">
+                            Campus photography, photo walks, editing workshops, and annual exhibition. All skill levels welcome!
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">Join Club</button>
+                            <button class="btn btn-secondary">View Gallery</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-club">Project</span>
+                                <h3 class="card-title">Campus Connect App</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👥 5 members</span>
+                            <span>⏰ Planning Phase</span>
+                        </div>
+                        <div class="card-content">
+                            Mobile app development for student services integration. Looking for developers and designers!
+                        </div>
+                        <div class="club-members">
+                            <span class="member-badge">Sneha</span>
+                            <span class="member-badge">Rahul</span>
+                            <span class="member-badge">+3 more</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">Request to Join</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feedback Section -->
+            <section id="feedback" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Feedback &amp; Suggestions</h1>
+                    <p class="section-subtitle">Share your ideas to improve campus life</p>
+                    <button class="btn btn-primary" onclick="openModal('addFeedbackModal')">+ Submit Feedback</button>
+                </div>
+
+                <div class="grid-2" id="feedbackGrid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-event">Suggestion</span>
+                                <h3 class="card-title">Extended Library Hours</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👤 Anonymous</span>
+                            <span>📅 Oct 22, 2025</span>
+                            <span>👍 24 upvotes</span>
+                        </div>
+                        <div class="card-content">
+                            Library should be open 24/7 during examination periods. Many students prefer studying late night in library environment.
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary">👍 Upvote</button>
+                            <button class="btn btn-secondary">💬 Comment (3)</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-event">Feedback</span>
+                                <h3 class="card-title">More Parking Space Needed</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👤 Rohit M.</span>
+                            <span>📅 Oct 21, 2025</span>
+                            <span>👍 18 upvotes</span>
+                        </div>
+                        <div class="card-content">
+                            Current parking is insufficient for growing number of students with vehicles. Need designated two-wheeler parking.
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary">👍 Upvote</button>
+                            <button class="btn btn-secondary">💬 Comment (5)</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-event">Suggestion</span>
+                                <h3 class="card-title">Online Assignment Submission</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👤 Priya S.</span>
+                            <span>📅 Oct 20, 2025</span>
+                            <span>👍 31 upvotes</span>
+                        </div>
+                        <div class="card-content">
+                            Implement centralized system for assignment submission across all departments. Current email-based system is disorganized.
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary">👍 Upvote</button>
+                            <button class="btn btn-secondary">💬 Comment (8)</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <span class="badge badge-event">Feedback</span>
+                                <h3 class="card-title">Canteen Menu Variety</h3>
+                            </div>
+                        </div>
+                        <div class="card-meta">
+                            <span>👤 Anonymous</span>
+                            <span>📅 Oct 19, 2025</span>
+                            <span>👍 15 upvotes</span>
+                        </div>
+                        <div class="card-content">
+                            Need more variety in canteen menu. Healthy food options and weekly menu rotation would be great.
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary">👍 Upvote</button>
+                            <button class="btn btn-secondary">💬 Comment (2)</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+            <!-- Other sections: Attendance, Timetable, Clubs, Feedback -->
+            <!-- (Similar structure - add remaining sections from original code) -->
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- (Add all modal HTML from original code) -->
+
+    <script src="js/navigation.js"></script>
+    <script src="js/modals.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>
